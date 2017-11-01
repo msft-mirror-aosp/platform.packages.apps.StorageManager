@@ -27,7 +27,7 @@ import android.os.Bundle;
 import android.os.SystemProperties;
 import android.text.format.Formatter;
 import com.android.internal.logging.MetricsLogger;
-import com.android.internal.logging.MetricsProto.MetricsEvent;
+import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 import com.android.storagemanager.R;
 import com.android.storagemanager.utils.Constants;
 
@@ -80,7 +80,8 @@ public class ConfirmDeletionDialog extends DialogFragment implements
                 ((DeletionHelperSettings) getTargetFragment()).clearData();
                 MetricsLogger.action(getContext(),
                         MetricsEvent.ACTION_DELETION_HELPER_REMOVE_CONFIRM);
-                if (StorageManagerUpsellDialog.shouldShow(getContext())) {
+                if (StorageManagerUpsellDialog.shouldShow(
+                        getContext(), System.currentTimeMillis())) {
                     StorageManagerUpsellDialog upsellDialog =
                             StorageManagerUpsellDialog.newInstance(mFreeableBytes);
                     upsellDialog.show(getFragmentManager(), StorageManagerUpsellDialog.TAG);
