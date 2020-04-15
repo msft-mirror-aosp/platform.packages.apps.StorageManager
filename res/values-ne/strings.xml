@@ -27,7 +27,7 @@
     <string name="deletion_helper_app_summary_unknown_used" msgid="8576377054665785558">"पछिल्लो पटक कहिले प्रयोग गरियो भन्ने बारे निश्चित छैन"</string>
     <string name="deletion_helper_free_button" msgid="1760529213407548661">"<xliff:g id="FREEABLE">%1$s</xliff:g> खाली गर्नुहोस्"</string>
     <string name="deletion_helper_photos_title" msgid="2602723121486729972">"ब्याक अप गरिएका तस्बिर तथा भिडियोहरू"</string>
-    <string name="deletion_helper_photos_age_summary" msgid="1820871709448371984">"३० दिनभन्दा बढी पुरानो"</string>
+    <string name="deletion_helper_photos_age_summary" msgid="1820871709448371984">"कम्तीमा ३० दिन पुरानो"</string>
     <!-- no translation found for deletion_helper_photos_summary (3194825464552700889) -->
     <skip />
     <string name="deletion_helper_downloads_title" msgid="8002058095019254694">"डाउनलोडहरू"</string>
