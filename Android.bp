@@ -32,6 +32,8 @@ android_app {
         "androidx.recyclerview_recyclerview",
     ],
 
+    uses_libs: ["org.apache.http.legacy"],
+
     resource_dirs: ["res"],
 
     srcs: ["src/**/*.java"],
