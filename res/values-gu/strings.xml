@@ -45,7 +45,7 @@
     <string name="deletion_helper_apps_group_title" msgid="2578309121350341258">"ક્વચિત્ ઉપયોગમાં લેવાયેલી ઍપ્લિકેશનો"</string>
     <!-- no translation found for deletion_helper_apps_group_summary (360315517252452356) -->
     <skip />
-    <string name="deletion_helper_automatic_title" msgid="4610119358490679299">"ઑટોમૅટિક રીતે"</string>
+    <string name="deletion_helper_automatic_title" msgid="4610119358490679299">"સ્વચાલિત"</string>
     <string name="deletion_helper_manual_title" msgid="3905192395039688529">"મેન્યુઅલ"</string>
     <string name="deletion_helper_preference_title" msgid="803484286872745892">"હમણાં સ્થાન ખાલી કરો"</string>
     <string name="automatic_storage_manager_service_label" msgid="648592272375278978">"ઑટોમેટિક સ્ટોરેજ મેનેજમેન્ટ સેવા"</string>
