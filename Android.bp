@@ -20,6 +20,7 @@ android_app {
     name: "StorageManager",
     defaults: ["SettingsLibDefaults"],
     platform_apis: true,
+    certificate: "platform",
 
     optimize: {
         proguard_flags_files: ["proguard.cfg"],
