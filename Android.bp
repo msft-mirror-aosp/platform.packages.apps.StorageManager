@@ -43,3 +43,33 @@ android_app {
 
     srcs: ["src/**/*.java"],
 }
+
+filegroup {
+    name: "StorageManager_proguard_flags",
+    srcs: ["proguard.cfg"],
+}
+
+// The sources for StorageManager need to be exposed to StorageManagerGoogle.
+filegroup {
+    name: "StorageManager_srcs",
+    srcs: ["src/**/*.java"],
+}
+
+android_library {
+    name: "StorageManager-res-lib",
+
+    manifest: "AndroidManifest.xml",
+
+    static_libs: [
+        "androidx.appcompat_appcompat",
+        "androidx.preference_preference",
+    ],
+
+    resource_dirs: [
+        "res",
+    ],
+
+    aaptflags: [
+        "--auto-add-overlay",
+    ],
+}
