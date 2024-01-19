@@ -14,9 +14,6 @@ android_robolectric_test {
     java_resource_dirs: ["config"],
 
     libs: [
-        "robolectric_android-all-stub",
-        //"Robolectric_all-target",
-        //"mockito-robolectric-prebuilt",
         "truth",
     ],
 
