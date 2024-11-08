@@ -3,6 +3,11 @@ package {
     default_applicable_licenses: ["Android-Apache-2.0"],
 }
 
+filegroup {
+    name: "StorageManagerUnitTests_src",
+    srcs: ["src/**/*.java"],
+}
+
 android_test {
     name: "StorageManagerUnitTests",
 
