@@ -3,13 +3,18 @@ package {
     default_applicable_licenses: ["Android-Apache-2.0"],
 }
 
+filegroup {
+    name: "StorageManagerUnitTests_src",
+    srcs: ["src/**/*.java"],
+}
+
 android_test {
     name: "StorageManagerUnitTests",
 
     libs: [
-        "android.test.runner",
-        "android.test.base",
-        "android.test.mock",
+        "android.test.runner.stubs.system",
+        "android.test.base.stubs.system",
+        "android.test.mock.stubs.system",
     ],
 
     static_libs: [
