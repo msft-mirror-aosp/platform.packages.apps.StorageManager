@@ -15,6 +15,7 @@ android_robolectric_test {
     java_resource_dirs: ["config"],
 
     libs: [
+        "androidx.test.core",
         "truth",
     ],
 
