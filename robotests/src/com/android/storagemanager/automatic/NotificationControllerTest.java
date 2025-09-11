@@ -17,20 +17,25 @@
 package com.android.storagemanager.automatic;
 
 import static com.google.common.truth.Truth.assertThat;
+
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.reset;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.verifyNoMoreInteractions;
 import static org.mockito.Mockito.verifyNoInteractions;
+import static org.mockito.Mockito.verifyNoMoreInteractions;
+import static org.robolectric.Shadows.shadowOf;
 
 import android.app.Activity;
+import android.app.Application;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
 import android.provider.Settings;
+
+import androidx.test.core.app.ApplicationProvider;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -56,7 +61,8 @@ public class NotificationControllerTest {
     @Before
     public void setUp() {
         MockitoAnnotations.initMocks(this);
-        ShadowApplication application = ShadowApplication.getInstance();
+        ShadowApplication application =
+                shadowOf((Application) ApplicationProvider.getApplicationContext());
         application.setSystemService(Context.NOTIFICATION_SERVICE, mNotificationManager);
         mController = new NotificationController();
         mClock = new FakeClock();
@@ -196,7 +202,10 @@ public class NotificationControllerTest {
     public void testTappingGoesToStorageSettings() {
         mController.onReceive(mContext, new Intent(NotificationController.INTENT_ACTION_TAP));
 
-        assertThat(ShadowApplication.getInstance().getNextStartedActivity().getAction())
+        assertThat(
+                        shadowOf((Application) ApplicationProvider.getApplicationContext())
+                                .getNextStartedActivity()
+                                .getAction())
                 .isEqualTo(Settings.ACTION_INTERNAL_STORAGE_SETTINGS);
     }
 

@@ -17,6 +17,7 @@
 package com.android.storagemanager.automatic;
 
 import static com.google.common.truth.Truth.assertThat;
+
 import static org.mockito.Mockito.any;
 import static org.mockito.Mockito.anyInt;
 import static org.mockito.Mockito.eq;
@@ -26,8 +27,10 @@ import static org.mockito.Mockito.nullable;
 import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import static org.robolectric.Shadows.shadowOf;
 import static org.robolectric.annotation.LooperMode.Mode.LEGACY;
 
+import android.app.Application;
 import android.app.NotificationManager;
 import android.app.job.JobParameters;
 import android.app.usage.StorageStatsManager;
@@ -41,6 +44,8 @@ import android.os.storage.StorageManager;
 import android.os.storage.VolumeInfo;
 import android.provider.Settings;
 
+import androidx.test.core.app.ApplicationProvider;
+
 import com.android.settingslib.deviceinfo.StorageVolumeProvider;
 import com.android.storagemanager.overlay.FeatureFactory;
 import com.android.storagemanager.overlay.StorageManagementJobProvider;
@@ -50,10 +55,10 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.robolectric.annotation.LooperMode;
 import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.RuntimeEnvironment;
+import org.robolectric.annotation.LooperMode;
 import org.robolectric.shadows.ShadowApplication;
 import org.robolectric.util.ReflectionHelpers;
 
@@ -108,7 +113,7 @@ public class AutomaticStorageManagementJobServiceTest {
                 .thenReturn(100L);
 
         mContext = RuntimeEnvironment.application;
-        mApplication = ShadowApplication.getInstance();
+        mApplication = shadowOf((Application) ApplicationProvider.getApplicationContext());
         mApplication.setSystemService(Context.BATTERY_SERVICE, mBatteryManager);
         mApplication.setSystemService(Context.NOTIFICATION_SERVICE, mNotificationManager);
 
