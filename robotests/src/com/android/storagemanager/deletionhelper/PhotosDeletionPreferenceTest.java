@@ -31,13 +31,14 @@ import org.robolectric.annotation.LooperMode;
 import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.RuntimeEnvironment;
+import org.robolectric.shadows.ShadowLooper;
 
 import static com.google.common.truth.Truth.assertThat;
 import static org.mockito.Mockito.when;
 import static org.robolectric.annotation.LooperMode.Mode.LEGACY;
 
 @RunWith(RobolectricTestRunner.class)
-@LooperMode(LEGACY)
+@LooperMode(LooperMode.Mode.PAUSED)
 public class PhotosDeletionPreferenceTest {
     private PreferenceViewHolder mHolder;
     private PhotosDeletionPreference mPreference;
@@ -80,8 +81,7 @@ public class PhotosDeletionPreferenceTest {
     @Test
     public void testItemVisibilityAfterLoaded() {
         mPreference.onFreeableChanged(0, 0);
-        Robolectric.flushBackgroundThreadScheduler();
-        Robolectric.flushForegroundThreadScheduler();
+        ShadowLooper.idleMainLooper();
         mPreference.onBindViewHolder(mHolder);
 
         // After onFreeableChanged is called, we're no longer loading.
@@ -94,8 +94,7 @@ public class PhotosDeletionPreferenceTest {
     @Test
     public void testTitleAndSummaryAfterLoaded() {
         mPreference.onFreeableChanged(10, 1000L);
-        Robolectric.flushBackgroundThreadScheduler();
-        Robolectric.flushForegroundThreadScheduler();
+        ShadowLooper.idleMainLooper();
         mPreference.onBindViewHolder(mHolder);
 
         assertThat(mPreference.getTitle()).isEqualTo("Backed up photos & videos");
@@ -106,8 +105,7 @@ public class PhotosDeletionPreferenceTest {
     public void testDisabledIfNothingToClear() {
         when(mDeletionType.isEmpty()).thenReturn(true);
         mPreference.onFreeableChanged(0, 0);
-        Robolectric.flushBackgroundThreadScheduler();
-        Robolectric.flushForegroundThreadScheduler();
+        ShadowLooper.idleMainLooper();
         mPreference.onBindViewHolder(mHolder);
 
         assertThat(mPreference.isEnabled()).isFalse();
@@ -116,8 +114,7 @@ public class PhotosDeletionPreferenceTest {
     @Test
     public void testGetFreeableBytes() {
         mPreference.onFreeableChanged(100, 1024L);
-        Robolectric.flushBackgroundThreadScheduler();
-        Robolectric.flushForegroundThreadScheduler();
+        ShadowLooper.idleMainLooper();
 
         assertThat(mPreference.getFreeableBytes(DeletionHelperSettings.COUNT_CHECKED_ONLY))
                 .isEqualTo(0);

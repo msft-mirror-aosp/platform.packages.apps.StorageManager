@@ -28,7 +28,6 @@ import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.robolectric.Shadows.shadowOf;
-import static org.robolectric.annotation.LooperMode.Mode.LEGACY;
 
 import android.app.Application;
 import android.app.NotificationManager;
@@ -60,6 +59,7 @@ import org.robolectric.RobolectricTestRunner;
 import org.robolectric.RuntimeEnvironment;
 import org.robolectric.annotation.LooperMode;
 import org.robolectric.shadows.ShadowApplication;
+import org.robolectric.shadows.ShadowLooper;
 import org.robolectric.util.ReflectionHelpers;
 
 import java.io.File;
@@ -67,7 +67,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RunWith(RobolectricTestRunner.class)
-@LooperMode(LEGACY)
+@LooperMode(LooperMode.Mode.PAUSED)
 public class AutomaticStorageManagementJobServiceTest {
     @Mock private BatteryManager mBatteryManager;
     @Mock private NotificationManager mNotificationManager;
@@ -159,7 +159,7 @@ public class AutomaticStorageManagementJobServiceTest {
     public void testStartJobTriesUpsellWhenASMDisabled() {
         assertThat(mJobService.onStartJob(mJobParameters)).isFalse();
         assertJobFinished(false);
-        mApplication.runBackgroundTasks();
+        ShadowLooper.idleMainLooper();
 
         List<Intent> broadcastedIntents = mApplication.getBroadcastIntents();
         assertThat(broadcastedIntents.size()).isEqualTo(1);
