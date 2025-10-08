@@ -35,7 +35,6 @@ import org.robolectric.shadows.ShadowLooper;
 
 import static com.google.common.truth.Truth.assertThat;
 import static org.mockito.Mockito.when;
-import static org.robolectric.annotation.LooperMode.Mode.LEGACY;
 
 @RunWith(RobolectricTestRunner.class)
 @LooperMode(LooperMode.Mode.PAUSED)
