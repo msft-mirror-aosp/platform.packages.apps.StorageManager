@@ -18,7 +18,6 @@ package com.android.storagemanager.deletionhelper;
 
 import static com.google.common.truth.Truth.assertThat;
 import static org.mockito.Mockito.when;
-import static org.robolectric.annotation.LooperMode.Mode.LEGACY;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -36,9 +35,10 @@ import org.robolectric.annotation.LooperMode;
 import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.RuntimeEnvironment;
+import org.robolectric.shadows.ShadowLooper;
 
 @RunWith(RobolectricTestRunner.class)
-@LooperMode(LEGACY)
+@LooperMode(LooperMode.Mode.PAUSED)
 public class CollapsibleCheckboxPreferenceGroupTest {
 
     private Context mContext;
@@ -76,8 +76,7 @@ public class CollapsibleCheckboxPreferenceGroupTest {
         when(mDeletionType.getLoadingStatus()).thenReturn(LoadingStatus.COMPLETE);
         mPreference.switchSpinnerToCheckboxOrDisablePreference(
                 100L, mDeletionType.getLoadingStatus());
-        Robolectric.flushBackgroundThreadScheduler();
-        Robolectric.flushForegroundThreadScheduler();
+        ShadowLooper.idleMainLooper();
         mPreference.onBindViewHolder(mHolder);
 
         // After onFreeableChanged is called, we're no longer loading.
