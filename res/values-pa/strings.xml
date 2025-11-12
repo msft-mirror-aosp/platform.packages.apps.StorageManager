@@ -24,7 +24,7 @@
     <!-- no translation found for deletion_helper_app_summary_item_size (3770886184921427886) -->
     <skip />
     <string name="deletion_helper_app_summary_never_used" msgid="2695210890063792461">"ਪਿਛਲੇ ਸਾਲ ਨਹੀਂ ਵਰਤੀ ਗਈ"</string>
-    <string name="deletion_helper_app_summary_unknown_used" msgid="8576377054665785558">"ਪਤਾ ਨਹੀਂ ਪਿਛਲੀ ਵਾਰ ਕਦੋਂ ਵਰਤੀ ਗਈ"</string>
+    <string name="deletion_helper_app_summary_unknown_used" msgid="8576377054665785558">"ਪੱਕਾ ਪਤਾ ਨਹੀਂ ਕਿ ਪਿਛਲੀ ਵਾਰ ਕਦੋਂ ਵਰਤੀ ਗਈ"</string>
     <string name="deletion_helper_free_button" msgid="1760529213407548661">"<xliff:g id="FREEABLE">%1$s</xliff:g> ਖਾਲੀ ਕਰੋ"</string>
     <string name="deletion_helper_photos_title" msgid="2602723121486729972">"ਬੈਕਅੱਪ ਲਈਆਂ ਗਈਆਂ ਫ਼ੋਟੋਆਂ ਅਤੇ ਵੀਡੀਓ"</string>
     <string name="deletion_helper_photos_age_summary" msgid="1820871709448371984">"30 ਦਿਨਾਂ ਤੋਂ ਜ਼ਿਆਦਾ ਪੁਰਾਣੀਆਂ"</string>
